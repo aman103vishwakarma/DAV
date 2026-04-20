@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+# Sample Dataset: Years of Experience (X) and Salary (y)
+X = np.array([[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]])
+y = np.array([45000, 50000, 60000, 80000, 110000, 150000, 190000, 230000, 260000,
+300000])
+# Initialize and Train the Model
+model = LinearRegression()
+model.fit(X, y)
+# Making Predictions
+y_pred = model.predict(X)
+# Model Parameters
+print(f"Coefficient (Slope): {model.coef_[0]}")
+print(f"Intercept: {model.intercept_}")
+# Visualizing the Results
+plt.scatter(X, y, color='red', label='Actual Data')
+plt.plot(X, y_pred, color='blue', label='Regression Line')
+plt.title('Salary vs Experience (Linear Regression)')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.legend()
+plt.show()
