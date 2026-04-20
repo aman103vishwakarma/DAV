@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from statsmodels.tsa.arima.model import ARIMA
+# Generate Synthetic Time Series Data
+np.random.seed(42)
+index = pd.date_range(start=&#39;2020-01-01&#39;, periods=100, freq=&#39;M&#39;)
+data = np.cumsum(np.random.normal(size=100)) + 100
+ts = pd.Series(data, index=index)
+# Build ARIMA Model (Order: p=1, d=1, q=1)
+model = ARIMA(ts, order=(1, 1, 1))
+model_fit = model.fit()
+# Summary of the model
+print(model_fit.summary())
+# Forecasting next 12 months
+forecast = model_fit.forecast(steps=12)
+# Visualization
+plt.plot(ts, label=&#39;Observed&#39;)
+plt.plot(forecast, label=&#39;Forecast&#39;, color=&#39;red&#39;)
+plt.title(&#39;ARIMA Forecasting&#39;)
+plt.legend()
+plt.show()
