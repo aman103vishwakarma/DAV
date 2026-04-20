@@ -1,0 +1,24 @@
+# Load necessary libraries
+library(ggplot2)
+library(datasets)
+# 1. Scatter Plot using Base R
+# Dataset: mtcars
+plot(mtcars$wt, mtcars$mpg,
+main=&quot;Scatterplot of Weight vs. MPG&quot;,
+xlab=&quot;Weight&quot;, ylab=&quot;Miles Per Gallon&quot;,
+pch=19, col=&quot;blue&quot;)
+# 2. Histogram using ggplot2
+# Dataset: iris
+ggplot(iris, aes(x=Sepal.Length)) +
+geom_histogram(binwidth=0.2, fill=&quot;steelblue&quot;, color=&quot;white&quot;) +
+labs(title=&quot;Distribution of Sepal Length&quot;, x=&quot;Sepal Length&quot;, y=&quot;Frequency&quot;) +
+theme_minimal()
+# 3. Boxplot using ggplot2
+ggplot(iris, aes(x=Species, y=Petal.Width, fill=Species)) +
+geom_boxplot() +
+labs(title=&quot;Petal Width by Species&quot;, x=&quot;Species&quot;, y=&quot;Petal Width&quot;) +
+theme_classic()
+# 4. Bar Chart using Base R
+counts &lt;- table(mtcars$gear)
+barplot(counts, main=&quot;Car Distribution by Gears&quot;,
+xlab=&quot;Number of Gears&quot;, col=&quot;darkgreen&quot;)
