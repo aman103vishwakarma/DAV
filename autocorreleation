@@ -1,0 +1,20 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+# Generate a synthetic AR(1) Time Series Process
+np.random.seed(42)
+n = 100
+y = np.zeros(n)
+for t in range(1, n):
+y[t] = 0.7 * y[t-1] + np.random.normal()
+# Create Visualizations for ACF and PACF
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+# Plot Autocorrelation Function (ACF)
+plot_acf(y, lags=20, ax=ax1)
+ax1.set_title(&#39;Autocorrelation Function (ACF)&#39;)
+# Plot Partial Autocorrelation Function (PACF)
+plot_pacf(y, lags=20, ax=ax2, method=&#39;ywm&#39;)
+ax2.set_title(&#39;Partial Autocorrelation Function (PACF)&#39;)
+plt.tight_layout()
+plt.show()
