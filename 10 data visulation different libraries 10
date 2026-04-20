@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+# 1. Matplotlib Stacked Bar Chart
+labels = [&#39;G1&#39;, &#39;G2&#39;, &#39;G3&#39;, &#39;G4&#39;, &#39;G5&#39;]
+men = [20, 35, 30, 35, 27]; women = [25, 32, 34, 20, 25]
+plt.bar(labels, men, label=&#39;Men&#39;)
+plt.bar(labels, women, bottom=men, label=&#39;Women&#39;)
+plt.legend(); plt.title(&#39;Stacked Bar&#39;); plt.show()
+# 2. Seaborn Violin Plot
+# Using sample data (Total Bill vs Day)
+sns.violinplot(x=&#39;day&#39;, y=&#39;total_bill&#39;, data=df_tips, hue=&#39;sex&#39;, split=True)
+plt.title(&#39;Seaborn Violin Plot&#39;); plt.show()
+# 3. Pandas Area Plot
+df_area = pd.DataFrame(np.random.rand(10, 4), columns=[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;])
+df_area.plot.area()
+plt.title(&#39;Pandas Area Plot&#39;); plt.show()
+# 4. Seaborn Heatmap
+sns.heatmap(df_iris.corr(), annot=True)
+plt.title(&#39;Correlation Heatmap&#39;); plt.show()
