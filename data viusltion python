@@ -1,0 +1,27 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+# Sample Data
+data = {
+&#39;Category&#39;: [&#39;Electronics&#39;, &#39;Clothing&#39;, &#39;Home&#39;, &#39;Beauty&#39;, &#39;Sports&#39;],
+&#39;Sales&#39;: [45000, 32000, 28000, 15000, 12000]
+}
+df = pd.DataFrame(data)
+# --- 1. Bar Chart ---
+plt.figure(figsize=(8,4))
+sns.barplot(x=&#39;Category&#39;, y=&#39;Sales&#39;, data=df)
+plt.title(&#39;Sales by Category&#39;)
+plt.show()
+# --- 2. Scatter Plot ---
+x = np.random.randn(100)
+y = np.random.randn(100)
+plt.figure(figsize=(8,4))
+plt.scatter(x, y, color=&#39;purple&#39;)
+plt.title(&#39;Scatter Plot Analysis&#39;)
+plt.show()
+# --- 3. Pie Chart ---
+plt.figure(figsize=(6,6))
+plt.pie(df[&#39;Sales&#39;], labels=df[&#39;Category&#39;], autopct=&#39;%1.1f%%&#39;)
+plt.title(&#39;Sales Distribution&#39;)
+plt.show()
